@@ -1,7 +1,11 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useRef } from "react";
 import { Title } from "./title";
 import { cn } from "@/lib/utils";
 import ProductCard from "./product-card";
+import { useIntersection } from "react-use";
+import { useCategoryStore } from "@/store/category";
 
 type Props = {
   title: string;
@@ -18,8 +22,22 @@ const ProductsGroupList = ({
   listClassName,
   categoryId,
 }) => {
+  // это для поимки секции при скролле
+  
+  const intersectionRef = React.useRef(null);
+   const setActiveCategoryId = useCategoryStore((state) => state.setActiveId)
+  const intersection = useIntersection(intersectionRef, {
+    threshold: 0.4,
+  });
+
+  useEffect(() => {
+    if (intersection?.isIntersecting) {
+      setActiveCategoryId(categoryId);
+    }
+  }, [intersection?.isIntersecting]);
+
   return (
-    <div>
+    <div id={title} ref={intersectionRef}>
       <Title text={title} size="lg" className="font-extrabold mb-5" />
 
       <div className={cn("grid grid-cols-3 gap-[50px]", listClassName)}>

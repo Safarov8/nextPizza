@@ -3,12 +3,12 @@
 // import Categories from "@/components/shared/categories";
 import { Container } from "@/components/shared/container";
 import Filters from "@/components/shared/filters";
-import ProductCard from "@/components/shared/product-card";
+// import ProductCard from "@/components/shared/product-card";
 import ProductsGroupList from "@/components/shared/products-group-list";
 // import SortPopup from "@/components/shared/sort-popup";
 import { Title } from "@/components/shared/title";
 import TopBar from "@/components/shared/top-bar";
-import { Button } from "@/components/ui/button";
+// import { Button } from "@/components/ui/button";
 
 
 export default function Home() {
@@ -21,7 +21,7 @@ export default function Home() {
       <Container className=" pb-14 mt-10 ">
         {/* фильтрация */}
 
-        <div className="flex gap-[60px]">
+        <div className="flex gap-[80px]">
           <div className="w-[250px]">
             <Filters />
           </div>
@@ -57,6 +57,68 @@ export default function Home() {
                     items: [{price: 550}]
                   },
                   {
+                    id: 3,
+                    name: "Пицца мацорелла",
+                    imageUrl : "https://media.dodostatic.net/image/r:292x292/11EE7D61706D472F9A5D71EB94149304.avif",
+                    // price:{550}, 
+                    items: [{price: 550}]
+                  },
+                  {
+                    id: 4,
+                    name: "Пицца Мотти",
+                    imageUrl : "https://media.dodostatic.net/image/r:292x292/11EE7D61706D472F9A5D71EB94149304.avif",
+                    // price:{550}, 
+                    items: [{price: 550}]
+                  },
+                  {
+                    id: 5,
+                    name: "Пицца мацорелла",
+                    imageUrl : "https://media.dodostatic.net/image/r:292x292/11EE7D61706D472F9A5D71EB94149304.avif",
+                    // price:{550}, 
+                    items: [{price: 550}]
+                  },
+                  {
+                    id: 6,
+                    name: "Пицца Мотти",
+                    imageUrl : "https://media.dodostatic.net/image/r:292x292/11EE7D61706D472F9A5D71EB94149304.avif",
+                    // price:{550}, 
+                    items: [{price: 550}]
+                  },
+                  {
+                    id: 7,
+                    name: "Пицца мацорелла",
+                    imageUrl : "https://media.dodostatic.net/image/r:292x292/11EE7D61706D472F9A5D71EB94149304.avif",
+                    // price:{550}, 
+                    items: [{price: 550}]
+                  },
+                  {
+                    id: 8,
+                    name: "Пицца Мотти",
+                    imageUrl : "https://media.dodostatic.net/image/r:292x292/11EE7D61706D472F9A5D71EB94149304.avif",
+                    // price:{550}, 
+                    items: [{price: 550}]
+                  },
+                  {
+                    id: 9,
+                    name: "Пицца мацорелла",
+                    imageUrl : "https://media.dodostatic.net/image/r:292x292/11EE7D61706D472F9A5D71EB94149304.avif",
+                    // price:{550}, 
+                    items: [{price: 550}]
+                  },
+                  {
+                    id: 10,
+                    name: "Пицца Мотти",
+                    imageUrl : "https://media.dodostatic.net/image/r:292x292/11EE7D61706D472F9A5D71EB94149304.avif",
+                    // price:{550}, 
+                    items: [{price: 550}]
+                  },
+                ]}
+              />
+              <ProductsGroupList
+                title="Комбо"
+                categoryId={2}
+                items={[
+                  {
                     id: 1,
                     name: "Пицца мацорелла",
                     imageUrl : "https://media.dodostatic.net/image/r:292x292/11EE7D61706D472F9A5D71EB94149304.avif",
@@ -71,42 +133,56 @@ export default function Home() {
                     items: [{price: 550}]
                   },
                   {
-                    id: 1,
+                    id: 3,
                     name: "Пицца мацорелла",
                     imageUrl : "https://media.dodostatic.net/image/r:292x292/11EE7D61706D472F9A5D71EB94149304.avif",
                     // price:{550}, 
                     items: [{price: 550}]
                   },
                   {
-                    id: 2,
+                    id: 4,
                     name: "Пицца Мотти",
                     imageUrl : "https://media.dodostatic.net/image/r:292x292/11EE7D61706D472F9A5D71EB94149304.avif",
                     // price:{550}, 
                     items: [{price: 550}]
                   },
                   {
-                    id: 1,
+                    id: 5,
                     name: "Пицца мацорелла",
                     imageUrl : "https://media.dodostatic.net/image/r:292x292/11EE7D61706D472F9A5D71EB94149304.avif",
                     // price:{550}, 
                     items: [{price: 550}]
                   },
                   {
-                    id: 2,
+                    id: 6,
                     name: "Пицца Мотти",
                     imageUrl : "https://media.dodostatic.net/image/r:292x292/11EE7D61706D472F9A5D71EB94149304.avif",
                     // price:{550}, 
                     items: [{price: 550}]
                   },
                   {
-                    id: 1,
+                    id: 7,
                     name: "Пицца мацорелла",
                     imageUrl : "https://media.dodostatic.net/image/r:292x292/11EE7D61706D472F9A5D71EB94149304.avif",
                     // price:{550}, 
                     items: [{price: 550}]
                   },
                   {
-                    id: 2,
+                    id: 8,
+                    name: "Пицца Мотти",
+                    imageUrl : "https://media.dodostatic.net/image/r:292x292/11EE7D61706D472F9A5D71EB94149304.avif",
+                    // price:{550}, 
+                    items: [{price: 550}]
+                  },
+                  {
+                    id: 9,
+                    name: "Пицца мацорелла",
+                    imageUrl : "https://media.dodostatic.net/image/r:292x292/11EE7D61706D472F9A5D71EB94149304.avif",
+                    // price:{550}, 
+                    items: [{price: 550}]
+                  },
+                  {
+                    id: 10,
                     name: "Пицца Мотти",
                     imageUrl : "https://media.dodostatic.net/image/r:292x292/11EE7D61706D472F9A5D71EB94149304.avif",
                     // price:{550}, 
