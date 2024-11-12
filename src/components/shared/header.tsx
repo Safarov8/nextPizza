@@ -5,6 +5,8 @@ import Image from "next/image";
 import logo from "@/app/public/logo.png";
 import { Button } from "../ui";
 import { ArrowRight, ShoppingCart, User } from "lucide-react";
+import Link from "next/link";
+import SearchInput from "./search-input";
 // import { Button } from "../ui/button";
 // import { Button } from "../ui/button";
 
@@ -15,6 +17,7 @@ const Header = (props: Props) => {
     <header className={cn("border border-b")}>
       <Container className="flex items-center justify-between py-8">
         {/* левая часть */}
+        <Link href={"/"}>
         <div className="flex items-center gap-4 ">
           <Image src={logo} alt="logo" width={35} height={35} />
           <div>
@@ -23,6 +26,11 @@ const Header = (props: Props) => {
               вкусней уже некуда
             </p>
           </div>
+        </div>
+        </Link>
+        <div className="mx-10 flex-1">
+          <SearchInput />
+
         </div>
         {/* правая часть */}
         <div className="flex items-center gap-3">

@@ -81,8 +81,8 @@ model Ingridient {
     price       Int
     imageUrl    String
 
-    products Product[]
-    cartItems CartItem[]
+    products    Product[]
+    cartItems   CartItem[]
 
     createdAt   DateTime @default(now())
     updatedAt   DateTime @updatedAt
@@ -92,12 +92,12 @@ model Ingridient {
 model Cart {
     id          Int     @id     @default(autoincrement())
 
-    user User? @relation(fields: [userId], references: [id])
-    userId Int? @unique
+    user        User? @relation(fields: [userId], references: [id])
+    userId      Int? @unique
     
     items CartItem[]
 
-    token String
+    token      String
 
     totalAmoun Int @default(0)
     
@@ -116,8 +116,6 @@ model CartItem {
     cartId      Int
 
     quantity    Int
-    // pizzaSize   Int?
-    // pizzaType   Int
 
     ingredients Ingridient[]
 
