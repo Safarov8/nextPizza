@@ -1,5 +1,4 @@
 import { useSet } from 'react-use';
-import React from "react";
 import { Api } from "./../services/api-client";
 import { Ingridient } from "@prisma/client";
 import { useEffect, useState } from "react";
@@ -9,14 +8,14 @@ import { useEffect, useState } from "react";
 interface ReturnProps {
   ingridients: Ingridient[];
   loading: boolean;
-  selectedIds: Set<string>;
+  selectedIngridients: Set<string>;
   onAddId: (id: string ) => void;
 }
 
 export const useFilterIngridients = () => {
   const [ingridients, setIngridients] = useState<Ingridient[]>([]);
   const [loading, setLoading] = useState(true);
-  const [selectedIds, { toggle }] = useSet(new Set<string>([]));
+  const [selectedIngridients, { toggle }] = useSet(new Set<string>([]));
 
 
 
@@ -36,5 +35,5 @@ export const useFilterIngridients = () => {
     fetchIngridients();
   }, []);
 
-  return { ingridients, loading, onAddId: toggle, selectedIds  };
+  return { ingridients, loading, onAddId: toggle, selectedIngridients };
 };
