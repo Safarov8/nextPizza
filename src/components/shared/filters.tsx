@@ -1,65 +1,22 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect,  } from "react";
 import { Title } from "./title";
-// import { FilterCheckbox } from "./filter-checkbox";
 import { Input } from "../ui";
 import { RangeSlider } from "./range-slider";
 import CheckboxFiltersGroup from "./checkbox-filters-group";
-import { useFilterIngridients } from "@/hooks/useFilterIngridients";
-import { useSet } from "react-use";
-// import { cn } from "@/lib/utils";
-// import { useStateList } from "react-use";
 import qs from "qs";
-import { useRouter } from "next/navigation";
-
-interface PriceProps {
-  priceFrom: number;
-  priceTo: number;
-}
+import { useRouter,  } from "next/navigation";
+import { useIngridients } from "@/hooks/use-ingridients";
+import { useFilters } from "@/hooks/use-filters";
 
 const Filters = (props: Props) => {
   const router = useRouter();
-  const { ingridients, loading, onAddId, selectedIngridients } =
-    useFilterIngridients();
+  const { ingridients, loading } = useIngridients();
+const filters = useFilters()
 
-  const [sizes, { toggle: toggleSizes }] = useSet(new Set<string>([]));
-  const [pizzaTypes, { toggle: togglePizzaTypes }] = useSet(
-    new Set<string>([])
-  );
 
-  const [prices, setPrice] = useState<PriceProps>({
-    priceFrom: 0,
-    priceTo: 1000,
-  });
 
-  const items = ingridients.map((item) => ({
-    value: String(item.id),
-    text: item.name,
-  }));
 
-  // const items = ingridients.map((item) => ({value: String(item.id), text: item.name}));
-  // const updatePrice = {name: keyof PriceProps, value: number}=>{
-  //   setPrice
-  // }
-
-  const updatePrice = (name: keyof PriceProps, value: number) => {
-    setPrice({ ...prices, [name]: value });
-  };
-
-  useEffect(() => {
-    const filters = {
-      ...prices,
-      pizzaTypes: Array.from(pizzaTypes),
-      sizes: Array.from(sizes),
-      ingridients: Array.from(selectedIngridients),
-    };
-    // для qs  того чтобы выбранные фильтры передать на роут
-    const query = qs.stringify(filters, {
-      // это arrayFormat: 'comma',  для того чтобы дважды не повторялись переданные данные объекта
-      arrayFormat: "comma",
-    });
-    router.push(`?${query}`, {scroll: false});
-  }, [prices, pizzaTypes, sizes, selectedIngridients, router]);
 
   return (
     <div>
@@ -117,7 +74,7 @@ const Filters = (props: Props) => {
           min={0}
           max={1000}
           step={10}
-          value={[prices.priceFrom, prices.priceTo]}
+          value={[prices.priceFrom || 0, prices.priceTo || 1000]}
           onValueChange={([priceFrom, priceTo]) =>
             setPrice({ priceFrom, priceTo })
           }
