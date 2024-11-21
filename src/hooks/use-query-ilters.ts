@@ -1,6 +1,11 @@
 import { useEffect } from "react";
+import { Filters } from "./use-filters";
+import qs from "qs";
+import { useRouter } from "next/navigation";
 
-export const useQueryFiltesr = (filters: ) => {
+export const useQueryFiltesr = (filters: Filters) => {
+
+  const router = useRouter();
   useEffect(() => {
     const params = {
       ...filters.prices,
@@ -14,5 +19,5 @@ export const useQueryFiltesr = (filters: ) => {
       arrayFormat: "comma",
     });
     router.push(`?${query}`, { scroll: false });
-  }, []);
+  }, [filters, router]);
 };

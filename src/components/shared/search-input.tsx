@@ -3,9 +3,8 @@ import { cn } from "@/lib/utils";
 import { Api } from "@/services/api-client";
 import { Product } from "@prisma/client";
 import { Search } from "lucide-react";
-// import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { useClickAway, useDebounce } from "react-use";
 
 type Props = {};

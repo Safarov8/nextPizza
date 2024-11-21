@@ -7,18 +7,17 @@ interface PriceProps {
   priceTo?: number;
 }
 
- interface QueryFilters extends PriceProps {
+interface QueryFilters extends PriceProps {
   pizzaTypes: string;
   sizes: string;
   ingridients: number;
 }
 
-export interface Filters{
+export interface Filters {
   sizes: Set<string>;
   pizzaTypes: Set<string>;
   selectedIngridients: Set<string>;
   prices: PriceProps;
-  
 }
 
 interface ReturnProps extends Filters {
@@ -29,14 +28,13 @@ interface ReturnProps extends Filters {
 }
 
 export const useFilters = (): ReturnProps => {
-  const router = useRouter();
   const searchParams = useSearchParams() as unknown as Map<
     keyof QueryFilters,
     string
   >;
 
   // филтр ингридиентов
-  const [selectedIngridients, { toggle: toogleIngridients }] = useSet(
+  const [selectedIngridients, { toggle: toggleIngridients }] = useSet(
     new Set<string>(searchParams.get("ingridients")?.split(","))
   );
 
@@ -62,12 +60,10 @@ export const useFilters = (): ReturnProps => {
     priceTo: Number(searchParams.get("priceTo")) || undefined,
   });
 
+  const updatePrice = (name: keyof PriceProps, value: number) => {
+    setPrices((prev) => ({ ...prev, [name]: value }));
+  };
 
-    const updatePrice = (name: keyof PriceProps, value: number) => {
-      setPrices({ ...prices, [name]: value });
-    };
-
-    
   return {
     sizes,
     pizzaTypes,
@@ -76,6 +72,6 @@ export const useFilters = (): ReturnProps => {
     setPrices: updatePrice,
     setPizzaTypes: togglePizzaTypes,
     setSizes: toggleSizes,
-    setSelectedIngridients: toogleIngridients,
+    setSelectedIngridients: toggleIngridients,
   };
 };

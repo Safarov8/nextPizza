@@ -23,11 +23,11 @@ const ProductsGroupList = ({
   categoryId,
 }) => {
   // это для поимки секции при скролле
-  
+
   const intersectionRef = React.useRef(null);
-   const setActiveCategoryId = useCategoryStore((state) => state.setActiveId)
+  const setActiveCategoryId = useCategoryStore((state) => state.setActiveId);
   const intersection = useIntersection(intersectionRef, {
-    threshold: 0.4,
+    threshold: 0.5,
   });
 
   useEffect(() => {
