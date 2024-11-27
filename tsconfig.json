@@ -26,7 +26,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/hooks/use-filter-ingridients.ts"
+    "shared/hooks/use-filter-ingridients.ts"
   ],
   "exclude": ["node_modules"]
 }
