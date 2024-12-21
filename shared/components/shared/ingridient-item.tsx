@@ -5,7 +5,7 @@ import { CircleCheck } from "lucide-react";
 type Props = {
   imageUrl: string;
   name: string;
-  price: string;
+  price: number;
   active?: boolean;
   onClick?: () => void;
 };
