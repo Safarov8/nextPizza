@@ -43,19 +43,6 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
               price={219}
               quantity={1}
             />
-            <CartDrawerItem
-              imageUrl={
-                "https://media.dodostatic.net/image/r:292x292/11ee7d6175c10773bfe36e56d48df7e3.avif"
-              }
-              id={1}
-              details={getCartItemDetails(2, 30, [
-                { name: "Цыплёнок" },
-                { name: "Сыр" },
-              ])}
-              name={"Чоризо фреш"}
-              price={219}
-              quantity={1}
-            />
           </div>
         </div>
 
