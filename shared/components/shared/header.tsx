@@ -7,7 +7,8 @@ import { Button } from "../ui";
 import { ArrowRight, ShoppingCart, User } from "lucide-react";
 import Link from "next/link";
 import SearchInput from "./search-input";
-import { CardButton } from "./card-button";
+import CartButton from "./cart-button";
+// import { CardButton } from "./card-button";
 // import { Button } from "../ui/button";
 // import { Button } from "../ui/button";
 
@@ -39,7 +40,7 @@ const Header = (props: Props) => {
             Войти
           </Button>
           <div>
-           <CardButton />
+           <CartButton />
           </div>
         </div>
       </Container>
