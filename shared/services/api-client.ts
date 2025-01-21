@@ -1,8 +1,10 @@
-// import { ingredients } from './../prisma/constants';
-// import { ingridients } from './../prisma/constants';
 import * as products from './products'
 import * as ingridients from './ingridients'
+import * as cart from './cart'
+
+
 export const Api = {
     products,
-    ingridients
+    ingridients,
+    cart,
 }

@@ -12,12 +12,20 @@ import { Button } from "../ui";
 import { ArrowRight } from "lucide-react";
 import CartDrawerItem from "./cart-drawer-item";
 import { getCartItemDetails } from "../../lib";
+import { userCartStore } from "../../store/cart";
+import { PizzaSize, PizzaType } from "../../constants/pizza";
 
 export interface Props {}
 
 export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
   children,
 }) => {
+  const { totalAmount, fetchCartItems, items } = userCartStore();
+
+  React.useEffect(() => {
+    fetchCartItems();
+  }, []);
+
   return (
     <Sheet>
       <SheetTrigger asChild>{children}</SheetTrigger>
@@ -30,7 +38,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
 
         <div className="-mx-6 mt-5 overflow-auto  flex-1 ">
           <div className="mb-2 ">
-            <CartDrawerItem
+            {/* <CartDrawerItem
               imageUrl={
                 "https://media.dodostatic.net/image/r:292x292/11ee7d6175c10773bfe36e56d48df7e3.avif"
               }
@@ -42,7 +50,22 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
               name={"Чоризо фреш"}
               price={219}
               quantity={1}
-            />
+            /> */}
+            {items.map((item) => (
+              <CartDrawerItem
+                key={item.id}
+                imageUrl={item.imageUrl}
+                id={item.id}
+                details={getCartItemDetails(
+                  item.ingredients,
+                  item.pizzaType as PizzaType,
+                  item.pizzaSize as PizzaSize
+                )}
+                name={item.name}
+                price={item.price}
+                quantity={item.quantity}
+              />
+            ))}
           </div>
         </div>
 
@@ -53,7 +76,8 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
                 Итого
                 <div className="flex-1 border-b border-dashed border-b-neutral-200 relative -top-1 mx-2 " />
               </span>
-              <span className="font-bold text-lg ">1500 ₽</span>
+              {/* <span className="font-bold text-lg ">1500 ₽</span> */}
+              <span className="font-bold text-lg ">{totalAmount} ₽</span>
             </div>
             <Link href={"/cart"}>
               <Button type="submit" className="w-full h-12 ml-2 ">
