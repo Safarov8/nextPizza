@@ -8,7 +8,7 @@ export async function PATCH(
 ) {
   try {
     const id = Number(params.id);
-    const data = (await req.json()) as {quantity: number};
+    const data = (await req.json()) as { quantity: number };
     const token = req.cookies.get("cartToken")?.value;
 
     if (!token) {
@@ -25,20 +25,59 @@ export async function PATCH(
       return NextResponse.json({ message: "Cart item not found" });
     }
 
-//обновляем cartItem  
+    //обновляем cartItem
     await prisma.cartItem.update({
-        where: {
-          id,
-        },
-        data: {
-          quantity: data.quantity
-        },
-      });
+      where: {
+        id,
+      },
+      data: {
+        quantity: data.quantity,
+      },
+    });
 
-      const updatedUserCart = await updateCartTotalAmount(token);
+    const updatedUserCart = await updateCartTotalAmount(token);
 
-      return NextResponse.json(updatedUserCart)
+    return NextResponse.json(updatedUserCart);
+  } catch (error) {
+    console.log(" [CART_PATCH] Server Error: ", error);
+    return NextResponse.json(
+      { message: " Не удалось обновить карзину" },
+      { status: 500 }
+    );
+  }
+}
 
+export async function DELETE(
+  req: NextRequest,
+  { params }: { params: { id: string } }
+) {
+  try {
+    const id = Number(params.id);
+    const token = req.cookies.get("cartToken")?.value;
+
+    if (!token) {
+      return NextResponse.json({ message: "Cart token not found" });
+    }
+
+    const cartItem = await prisma.cartItem.findFirst({
+      where: {
+        id: Number(params.id),
+      },
+    });
+
+    if (!cartItem) {
+      return NextResponse.json({ message: "Cart item not found" });
+    }
+
+    await prisma.cartItem.delete({
+      where: {
+        id: Number(params.id),
+      },
+    });
+
+    const updatedUserCart = await updateCartTotalAmount(token);
+
+    return NextResponse.json(updatedUserCart);
   } catch (error) {
     console.log(" [CART_PATCH] Server Error: ", error);
     return NextResponse.json(
